@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>dumbshitthatjakazidmade ph</title>
+        <style>
+            @keyframes tilt-shaking {
+                0% { transform: rotate(0deg); }
+                25% { transform: rotate(5deg); background-color: aqua;}
+                50% { transform: rotate(0deg); }
+                75% { transform: rotate(-5deg); }
+                100% { transform: rotate(0deg); }
+            }
+
+            body {
+                margin: 0;
+                background-color: chartreuse;
+            }
+
+            #phone {
+                width: 100%;
+                height: 100%;
+                font-size: 30em;
+                color: yellow;
+                background-color: plum;
+            }
+
+            #phone:hover {
+                cursor: pointer;
+                animation: tilt-shaking 0.15s infinite;
+            }
+        </style>
+    </head>
+
+    <body>
+        <button id="phone">
+            <span>📞</span>
+        </button>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var wrongcalls = [
+                    "https://www.musiqueapproximative.net/tracks/Garrec_Telephone.mp3",
+                    "https://www.musiqueapproximative.net/tracks/allocestmamie.mp3",
+                    "https://www.musiqueapproximative.net/tracks/allomamiepas%20contente.mp3",
+                    "https://www.musiqueapproximative.net/tracks/partiesA3.mp3",
+                    "https://www.musiqueapproximative.net/tracks/culotteenvolee.mp3",
+                    "https://www.musiqueapproximative.net/tracks/Il%20faut%20agir!.mp3",
+                    "https://www.musiqueapproximative.net/tracks/Polyphonic%20Size%20-%20Kloot%20on%20the%20phone.mp3",
+                    "https://www.musiqueapproximative.net/tracks/15%20Kloot%20on%20the%20phone%202%20(84).mp3",
+                    "https://www.musiqueapproximative.net/tracks/01%20Beeper.mp3",
+                    "https://www.musiqueapproximative.net/tracks/06%20-%20The%20Red%20Telephone.mp3",
+                    "https://www.musiqueapproximative.net/post/love-the-red-telephone?random=0&c=napel"
+                ]
+                document.getElementById("phone").addEventListener("click", function(el) {
+                    var wrong = document.getElementById("wrongnumber");
+                    var right = document.getElementById("younailedit");
+                    right.pause();
+                    right.currentTime = 0;
+
+                    var answer = prompt("WHO YOU GONNA CALL ??") || "";
+
+                    if (answer.toLowerCase().trim() === "ghostbusters") {
+                        right.play();
+                    } else {
+                        var wrongaudio = document.createElement("audio");
+                        wrongaudio.setAttribute("src", wrongcalls[Math.floor(Math.random() * wrongcalls.length)]);
+                        wrongaudio.play();
+                    }
+                })
+            });
+        </script>
+        <audio id="younailedit" src="https://www.musiqueapproximative.net/tracks/oDj2XxGVXZJH.128.mp3"></audio>
+        <audio id="wrongnumber" src="https://www.musiqueapproximative.net/tracks/Garrec_Telephone.mp3"></audio>
+    </body>
+</html>
