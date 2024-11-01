@@ -58,11 +58,7 @@
                     var answer = prompt("WHO YOU GONNA CALL ??") || "";
 
                     if (answer.toLowerCase().trim() === "ghostbusters") {
-                        if(!!(window.history && history.replaceState)){
-                            window.history.replaceState({}, document.title, 'https://www.musiqueapproximative.net/post/dumbshitthatjakazidmade-spooky-mix?play=1');
-                        } else {
-                            location.replace('https://www.musiqueapproximative.net/post/dumbshitthatjakazidmade-spooky-mix?play=1');
-                        }
+                        document.location = 'https:/www.musiqueapproximative.net/post/dumbshitthatjakazidmade-spooky-mix?play=1';
                     } else {
                         var wrongaudio = document.createElement("audio");
                         wrongaudio.setAttribute("src", wrongcalls[Math.floor(Math.random() * wrongcalls.length)]);
