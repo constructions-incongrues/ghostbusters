@@ -2,8 +2,8 @@
     <head>
         <title>There's Somethig Strange In The Neighborhood</title>
         <style>
-            body {
-                background-image: url("2379743_0b119.gif");
+            #home.haunted.retries-1 {
+                background-image: url("images/step01.gif");
             }
             @keyframes tilt-shaking {
                 0% { transform: rotate(0deg); background-color: red ;}
@@ -11,6 +11,14 @@
                 50% { transform: rotate(0deg); }
                 75% { transform: rotate(-5deg); background-color: cyan; }
                 100% { transform: rotate(0deg); }
+            }
+
+            #home.haunted.retries-2 {
+                font-size: 5em;
+            }
+
+            #home.haunted.retries-3 {
+                background-color: tomato;
             }
 
             body {
@@ -24,21 +32,22 @@
                 font-size: 30em;
                 color: yellow;
                 background-color: plum;
+                cursor: pointer;
             }
 
-            #phone {
-                cursor: pointer;
+            #phone:focus {
                 animation: tilt-shaking 0.5s infinite;
             }
         </style>
     </head>
 
-    <body>
+    <body id="home">
         <button id="phone">
             <span>📞</span>
         </button>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
+                document.retries = 0;
                 var wrongcalls = [
                     "https://www.musiqueapproximative.net/tracks/Garrec_Telephone.mp3",
                     "https://www.musiqueapproximative.net/tracks/allocestmamie.mp3",
@@ -52,7 +61,7 @@
                     "https://www.musiqueapproximative.net/tracks/06%20-%20The%20Red%20Telephone.mp3",
                     "https://www.musiqueapproximative.net/post/love-the-red-telephone?random=0&c=napel"
                 ]
-                document.getElementById("phone").addEventListener("click", function(el) {
+                document.getElementById("phone").addEventListener("click", function(el, retries) {
                     var wrong = document.getElementById("wrongnumber");
                     var right = document.getElementById("younailedit");
                     right.pause();
@@ -63,8 +72,12 @@
                     if (answer.toLowerCase().trim() === "ghostbusters") {
                         document.location = 'https://www.musiqueapproximative.net/post/dumbshitthatjakazidmade-spooky-mix?play=1';
                     } else {
+                        document.retries++;
+                        document.getElementById("home").classList.add("haunted");
+                        document.getElementById("home").classList.add("retries-" + document.retries);
                         var wrongaudio = document.createElement("audio");
                         wrongaudio.setAttribute("src", wrongcalls[Math.floor(Math.random() * wrongcalls.length)]);
+                        wrongaudio.volume = 1;
                         wrongaudio.play();
                     }
                 })
